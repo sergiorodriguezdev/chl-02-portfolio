@@ -1,10 +1,5 @@
 /* CSS variables */
 :root {
-    /* --first-color: #157f1f;
-    --second-color: #4cb963;
-    --third-color: #a0eade;
-    --fourth-color: #5c6784;
-    --fifth-color: #1d263b; */
     --first-color: #004e64;
     --second-color: #00a5cf;
     --third-color: #9fffcb;
@@ -44,9 +39,13 @@ a {
 }
 
 .nav-links li {
-
     padding: 10px;
     margin: 5px;
+}
+
+.nav-links a {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
 }
 
 .banner {
@@ -63,34 +62,58 @@ a {
 .banner img {
     height: 200px;
     border-radius: 50%;
+    border: thin solid var(--third-color);
     background-color: var(--second-color);
     margin: 15px;
 }
 
-.banner h2 {
-    background-color: var(--third-color);
-    font-size: 36px;
+#avatar-mobile {
+    display: none;
+}
+
+main {
+    border-left: thin solid var(--second-color);
+    border-right: thin solid var(--second-color);
+    border-bottom: thin solid var(--second-color);
+    border-radius: 10px;
 }
 
 main section {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 20px 0;
 }
 
 main section h3 {
-    border-right: medium solid var(--second-color);
+    /* border-right: medium solid var(--second-color); */
+    font-family: 'Courier New', Courier, monospace;
     font-size: 26px;
     padding: 10px;
-    text-align: end;
-    flex: 0 0 300px;
+    text-align: start;
+    /* flex: 0 0 200px; */
 }
 
-main  #about-me p,
+#whoami h3::before,
+#sudo h3::before,
+#ping h3::before {
+    content: '~$ ';
+}
+
+main  #whoami p,
 main section .main-grid,
 main section ul {
-    padding-left: 30px;
-} 
+    padding: 0 30px;
+}
+
+#whoami {
+    margin-top: 0;
+}
+
+#whoami p {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
 
 .main-grid {
     display: flex;
@@ -99,16 +122,16 @@ main section ul {
 }
 
 .large-card {
-    flex: 100%;
+    flex: 0 1 96%;
 }
 
 .card {
-    flex: 48%;
+    flex: 0 1 47%;
 }
 
 .large-card, .card {
     width: 300px;
-    height: 300px;
+    height: 350px;
     margin: 10px;
     border: medium solid var(--third-color);
     background-color: gray;
@@ -139,7 +162,7 @@ main section ul {
     object-position: 0 0;
 }
 
-#contact-me ul {
+#ping ul {
     font-size: 20px;
     width: 100%;
     display: flex;
@@ -148,13 +171,13 @@ main section ul {
     justify-content: space-evenly;
 }
 
-#contact-me li {
+#ping li {
     padding: 10px;
     margin: 5px;
-    
 }
 
 footer {
+    margin: 20px;
     display: flex;
     justify-content: center;
 }
@@ -164,6 +187,48 @@ footer h3 {
     font-weight: unset;
 }
 
+.terminal {
+    background-color: lightgray;
+    border-top: thin solid var(--second-color);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.terminal-buttons {
+    display: flex;
+}
+
+.terminal-buttons div {
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    margin: 5px;
+}
+
+.terminal-right {
+    width: 78px;
+}
+
+.close-button {
+    background-color: red;
+}
+
+.min-button {
+    background-color: yellow;
+}
+
+.max-button {
+    background-color: green;
+}
+
+
+/* 
+    Media Queries Screen
+*/
 /* Tablet */
 @media screen and (max-width: 768px) {
     .header {
@@ -177,10 +242,19 @@ footer h3 {
         flex-direction: column;
         align-items: center;
     }
+
+    .card {
+        flex: 100%;
+        height: 200px;
+    }
+
+    #ping li {
+        flex: 40%;
+    }
 }
 
 /* Mobile */
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 500px) {
     .header {
         height: 200px;
         align-items: center;
@@ -192,6 +266,7 @@ footer h3 {
 
     .nav-links ul {
         flex-direction: column;
+        text-align: center;
     }
 
     .nav-links li {
@@ -199,5 +274,16 @@ footer h3 {
         padding: 5px;
     }
 
+    #avatar1, #avatar2 {
+        display: none;
+    }
 
+    #avatar-mobile {
+        display: flex;
+    }
+
+    .card {
+        flex: 100%;
+        height: 200px;
+    }
 }
