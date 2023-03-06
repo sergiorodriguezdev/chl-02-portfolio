@@ -5,6 +5,9 @@
     --third-color: #9fffcb;
     --fourth-color: #25a18e;
     --fifth-color: #7ae582;
+    --terminal-font: 'Courier New', Courier, monospace;
+    --main-container-border-radius: 10px;
+    --circular-border-radius: 50%;
 }
 
 /* Universal selector */
@@ -13,10 +16,12 @@
     color: var(--second-color);
 }
 
+/* Remove hyperlink decorations */
 a {
     text-decoration: none;
 }
 
+/* Header selectors */
 .header {
     background-color: var(--first-color);
     height: 80px;
@@ -26,6 +31,7 @@ a {
     align-items: center;
 }
 
+/* Name styling */
 .header h1 {
     font-size: 46px;
     color: var(--third-color);
@@ -44,13 +50,16 @@ a {
     margin: 5px;
 }
 
+/* Nav links styling */
 .nav-links a {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--terminal-font); /* Match fonts to portfolio section headers */
     font-weight: bolder;
     color: var(--third-color);
-    position: relative;
+    position: relative; /* Required for hover animation */
 }
 
+/* Hyperlink hover animation selectors */
+/* This sets up the hover animation */
 .nav-links a:before {
     content: "";
     position: absolute;
@@ -62,184 +71,60 @@ a {
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out;
-  }
+ }
 
-  .nav-links a:hover:before {
+ /* Animation on hover */
+.nav-links a:hover:before {
     visibility: visible;
     transform: scaleX(1);
-  }
-
-#sudo img:hover {
-    filter: opacity(1);
 }
 
+/* Avatars selectors */
 .banner {
     background-image: linear-gradient(
         var(--first-color),
         var(--second-color)
-    );
+    ); /* Create gradient so it blends with header background color */
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 }
 
+/* Avatars styling */
 .banner img {
     height: 200px;
-    border-radius: 50%;
+    border-radius: var(--circular-border-radius); /* Circular border */
     border: thin solid var(--third-color);
     background-color: var(--second-color);
     margin: 15px;
 }
 
+/* Hide avatar that will only be visible in mobile devices */
 #avatar-mobile {
     display: none;
 }
 
+/* Main selectors */
 main {
+    /* Apply border to left, right, bottom */
+    /* If border is applied to top here, the styling looks off so it's applied under the .terminal selector */
     border-left: thin solid var(--second-color);
     border-right: thin solid var(--second-color);
     border-bottom: thin solid var(--second-color);
-    border-radius: 10px;
+    border-radius: var(--main-container-border-radius);
     margin: 5px;
 }
 
-main section {
-    display: flex;
-    flex-direction: column;
-    margin: 20px 0;
-}
-
-main section h3 {
-    /* border-right: medium solid var(--second-color); */
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 26px;
-    padding: 10px;
-    text-align: start;
-    /* flex: 0 0 200px; */
-}
-
-#whoami h3::before,
-#sudo h3::before,
-#ping h3::before {
-    content: '~$ ';
-}
-
-main  #whoami p,
-main section .main-grid,
-main section ul {
-    padding: 0 30px;
-}
-
-#whoami {
-    margin-top: 0;
-}
-
-#whoami p {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-}
-
-.main-grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.large-card {
-    flex: 0 1 96%;
-}
-
-.card {
-    flex: 0 1 47%;
-}
-
-.large-card, .card {
-    width: 300px;
-    height: 350px;
-    margin: 10px;
-    border: medium solid var(--third-color);
-    background-color: gray;
-    position: relative;
-}
-
-.card-text {
-    background-color: var(--third-color);
-    padding: 3px;
-    width: max-content;
-    position: absolute;
-    bottom: 25px;
-    left: 25px;
-}
-
-.card-header {
-    margin-bottom: 5px;
-}
-
-.card-description {
-    font-style: italic;
-}
-
-#sudo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: opacity(0.3);
-    transition: 1.5s;
-}
-
-#ping ul {
-    font-size: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-#ping li {
-    padding: 10px;
-    margin: 5px;
-}
-
-#ping a {
-    position: relative;
-}
-
-#ping a:before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--second-color);
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
-  }
-
-  #ping a:hover:before {
-    visibility: visible;
-    width: 100%;
-  }
-
-footer {
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-footer h3 {
-    font-size: 16px;
-    font-weight: unset;
-}
-
+/* Terminal window header selectors */
 .terminal {
     background-color: lightgray;
-    border-top: thin solid var(--second-color);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top: thin solid var(--second-color); /* Apply border to top only (see main selector comments) */
+
+    /* Rounded corners - top left and top right */
+    border-top-left-radius: var(--main-container-border-radius);
+    border-top-right-radius: var(--main-container-border-radius);
+    
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
@@ -247,20 +132,17 @@ footer h3 {
 }
 
 .terminal-buttons {
-    display: flex;
+    display: flex; /* Align buttons across */
 }
 
 .terminal-buttons div {
-    border-radius: 50%;
+    border-radius: var(--circular-border-radius); /* Circular border to mimic macOS close-minimize-adjust window buttons */
     width: 16px;
     height: 16px;
     margin: 5px;
 }
 
-.terminal-right {
-    width: 78px;
-}
-
+/* Apply red-yellow-green colors */
 .close-button {
     background-color: red;
 }
@@ -273,12 +155,171 @@ footer h3 {
     background-color: green;
 }
 
+/* Hardcode an empty div width to make sure "portfolio" text is always centered */
+.terminal-right {
+    width: 78px; /* This width value equals the width of the div that contains the red-yellow-green buttons */
+}
+
+/* Make main portfolio sections stacked */
+main section {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+/* Styling of section headers */
+main section h3 {
+    font-family: var(--terminal-font); /* Match fonts to nav links */
+    font-size: 26px;
+    padding: 10px;
+    text-align: start;
+}
+
+/* Add leading terminal prompt characters */
+#whoami h3::before,
+#sudo h3::before,
+#ping h3::before {
+    content: '~$ ';
+}
+
+/* Add styling to mimic a cursor at the end of each header */
+#whoami h3::after,
+#sudo h3::after,
+#ping h3::after {
+    content: '.';
+    background-color: lightgray;
+    color: lightgray;
+}
+
+/* Add spacing between the left-right margins and portfolio content, exlude headers */
+main #whoami p,
+main #sudo .main-grid,
+main #ping ul {
+    padding: 0 30px;
+}
+
+/* Remove top margin from top-most section */
+#whoami {
+    margin-top: 0;
+}
+
+/* Apply flexbox properties to About me content, exclude header */
+#whoami p {
+    display: flex;
+    text-align: center;
+}
+
+/* Apply flexbox properties to Work content, exclude header */
+.main-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Work content properties */
+.large-card, .card { 
+    margin: 10px;
+    border: medium solid var(--third-color);
+    background-color: gray;
+    position: relative; /* Required for floating text boxes (class="card-text") over img elements */
+}
+
+.large-card {
+    height: 350px; /* Make first project in list larger */
+    flex: 0 1 97%;
+}
+
+.card {
+    height: 250px;
+    flex: 0 1 48%;
+}
+
+.card-text {
+    background-color: var(--third-color);
+    padding: 3px;
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+}
+
+.card-header {
+    margin-bottom: 5px; /* Add spacing between card header and description */
+}
+
+.card-description {
+    font-style: italic;
+}
+
+/* Apply styling to project screenshots */
+#sudo img {
+    /* Force width and height to fill box based on values specified in .large-card and .card selectors */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes the image look stretched and cropped */
+    filter: opacity(0.3); /* Make the image look opaque */
+    transition: 1.5s; /* Required for hover animation */
+}
+
+/* Project screenshots hover animation */
+#sudo img:hover {
+    filter: opacity(1);
+}
+
+/* Apply flexbox properties to Contact me content, exclude header */
+#ping ul {
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#ping li {
+    padding: 10px;
+    margin: 5px;
+}
+
+/* Hyperlink hover animation selectors */
+#ping a {
+    position: relative; /* Required for hover animation */
+}
+
+/* This sets up the hover animation */
+#ping a:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--second-color);
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation on hover */
+#ping a:hover:before {
+    visibility: visible;
+    width: 100%;
+}
+
+/* Footer selectors */
+footer {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+footer h3 {
+    font-size: 16px;
+    font-weight: unset; /* Override font weight */
+}
 
 /* 
     Media Queries Screen
 */
 /* Tablet */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1074px) {
+    /* Increase header height and move nav links below name */
     .header {
         height: 100px;
         flex-direction: column;
@@ -286,32 +327,37 @@ footer h3 {
         align-items: center;
     }
 
+    /* Stack avatars */
     .banner {
         flex-direction: column;
         align-items: center;
     }
 
+    /* Expand small cards to take up entire width of viewport */
     .card {
         flex: 100%;
         height: 200px;
     }
 
+    /* Adjust width of Contact me links */
     #ping li {
         flex: 40%;
+        text-align: center;
     }
 }
 
 /* Mobile */
 @media screen and (max-width: 500px) {
+    /* Increase header height and move nav links below name */
     .header {
         height: 200px;
-        align-items: center;
     }
 
     .header h1 {
         font-size: 40px;
     }
 
+    /* Stack nav links vertically */
     .nav-links ul {
         flex-direction: column;
         text-align: center;
@@ -322,16 +368,13 @@ footer h3 {
         padding: 5px;
     }
 
+    /* Hide 2 avatars */
     #avatar1, #avatar2 {
         display: none;
     }
 
+    /* Unhide "mobile" specific avatar */
     #avatar-mobile {
         display: flex;
-    }
-
-    .card {
-        flex: 100%;
-        height: 200px;
     }
 }
